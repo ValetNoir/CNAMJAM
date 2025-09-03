@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://buurbyomkdu11"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_63vbk"]
+radius = 2.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_63vbk"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.2
+
+[node name="PlantArea" type="Area3D"]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("SphereShape3D_63vbk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-08, 0)
+mesh = SubResource("CylinderMesh_63vbk")
+skeleton = NodePath("")

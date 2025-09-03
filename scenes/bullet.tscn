@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c376gtj10r1l1"]
+
+[ext_resource type="Script" uid="uid://deg7oq3hmpfcu" path="res://scripts/bullet.gd" id="1_mkf8s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1aey"]
+radius = 0.025
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h1aey"]
+radius = 0.025
+height = 0.1
+
+[node name="Bullet" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_mkf8s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_h1aey")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_h1aey")
+skeleton = NodePath("../..")
