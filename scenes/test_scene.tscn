@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://h5itfouuthkk"]
+[gd_scene load_steps=7 format=3 uid="uid://h5itfouuthkk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main_character.tscn" id="1_g7g4h"]
+[ext_resource type="Script" uid="uid://ww646fvr2dqv" path="res://scripts/test_scene.gd" id="1_nd71p"]
 [ext_resource type="PackedScene" uid="uid://c376gtj10r1l1" path="res://scenes/bullet.tscn" id="2_j8ivh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a5oyu"]
@@ -16,6 +17,7 @@ sky = SubResource("Sky_g7g4h")
 tonemap_mode = 2
 
 [node name="Test scene" type="Node3D"]
+script = ExtResource("1_nd71p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j8ivh")
@@ -45,5 +47,14 @@ size = Vector3(1, 1.6, 1)
 can_jump = true
 
 [node name="Bullet" parent="." instance=ExtResource("2_j8ivh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.4)
-element = "hihihi"
+transform = Transform3D(3.66874, 0, 0, 0, 2.08396, 0, 0, 0, 2.28028, 0.396066, 1.4299, -2.41114)
+gravity_scale = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "vie : X"
+
+[connection signal="get_damage" from="Player" to="." method="player_hurted"]
