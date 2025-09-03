@@ -41,12 +41,9 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1, 0.5, 1.
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -1.21244, 0.8, 1.46603)
 size = Vector3(1, 1.6, 1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.56816, -2.43198)
-size = Vector3(1, 0.0703125, 1)
-
 [node name="Player" parent="." instance=ExtResource("1_g7g4h")]
 can_jump = true
 
 [node name="Bullet" parent="." instance=ExtResource("2_j8ivh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.4)
+element = "hihihi"
