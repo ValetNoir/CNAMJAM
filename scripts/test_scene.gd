@@ -11,7 +11,7 @@ func update_pv_ui():
 	$CanvasLayer/Label.text = "vie : " + str(pv)
 
 func player_hurted():
-	pv -= 250
+	pv -= 25
 	update_pv_ui()
 	if pv <= 0:
 		print('game over')

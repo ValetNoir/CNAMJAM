@@ -47,8 +47,7 @@ size = Vector3(1, 1.6, 1)
 can_jump = true
 
 [node name="Bullet" parent="." instance=ExtResource("2_j8ivh")]
-transform = Transform3D(3.66874, 0, 0, 0, 2.08396, 0, 0, 0, 2.28028, 0.396066, 1.4299, -2.41114)
-gravity_scale = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41634, -3.36656)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
