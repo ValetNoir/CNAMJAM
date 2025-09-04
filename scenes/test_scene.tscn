@@ -48,6 +48,7 @@ can_jump = true
 
 [node name="Bullet" parent="." instance=ExtResource("2_j8ivh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41634, -3.36656)
+speed = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

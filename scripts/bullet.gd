@@ -4,11 +4,10 @@ extends Node3D
 
 const PLANT_AREA: PackedScene = preload("res://scenes/plant_area.tscn")
 
-# baies, fleurs, lianes, etc...
-var element: String = "default"
-var direction: Vector3
-
 @export var speed: float = 10.0
+# baies, fleurs, lianes, etc...
+@export var element: String = "default"
+var direction: Vector3
 
 func _on_body_entered(body: Node) -> void:
 	
@@ -28,4 +27,4 @@ func _on_body_entered(body: Node) -> void:
 func spawn_zone() -> void:
 	var plant_area = PLANT_AREA.instantiate()
 	plant_area.element = element
-	# add_child(plant_area)
+	add_child(plant_area)
