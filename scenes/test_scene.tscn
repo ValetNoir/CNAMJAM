@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://h5itfouuthkk"]
+[gd_scene load_steps=8 format=3 uid="uid://h5itfouuthkk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main_character.tscn" id="1_g7g4h"]
 [ext_resource type="Script" uid="uid://ww646fvr2dqv" path="res://scripts/test_scene.gd" id="1_nd71p"]
 [ext_resource type="PackedScene" uid="uid://c376gtj10r1l1" path="res://scenes/bullet.tscn" id="2_j8ivh"]
+[ext_resource type="PackedScene" uid="uid://diusr31i4xijv" path="res://scenes/bottle beetle.tscn" id="4_7ddre"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a5oyu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -49,6 +50,9 @@ can_jump = true
 [node name="Bullet" parent="." instance=ExtResource("2_j8ivh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41634, -3.36656)
 speed = 10.0
+
+[node name="Bottle Beetle" parent="." instance=ExtResource("4_7ddre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13564, 0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
