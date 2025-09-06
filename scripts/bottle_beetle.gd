@@ -29,5 +29,6 @@ func _on_damage_cooldown_timeout() -> void:
 
 func _deal_damage():
 	if player_in_zone:
+		$"bottle beetle/AnimationPlayer".play("DashAttack")
 		player_in_zone.hurted()
 		damage_cooldown.start()
