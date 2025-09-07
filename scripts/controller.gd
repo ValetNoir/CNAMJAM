@@ -8,7 +8,8 @@ extends CharacterBody3D
 @export var can_move : bool = true
 @export var has_gravity : bool = true
 @export var can_jump : bool = true
-@export var can_sprint : bool = false
+@export var can_sprint : bool = true
+@export var can_shoot : bool = true
 
 @export_group("Speeds")
 @export var look_speed : float = 0.002
@@ -17,20 +18,33 @@ extends CharacterBody3D
 @export var sprint_speed : float = 10.0
 
 @export_group("Input Actions")
-@export var input_left : String = "ui_left"
-@export var input_right : String = "ui_right"
-@export var input_forward : String = "ui_up"
-@export var input_back : String = "ui_down"
-@export var input_jump : String = "ui_accept"
-@export var input_sprint : String = "sprint"
+@export var input_left : String
+@export var input_right : String
+@export var input_forward : String
+@export var input_back : String
+@export var input_jump : String
+@export var input_sprint : String
+@export var input_fire1 : String
+@export var input_fire2 : String
+
+@export_group("Current Element")
+@export var element1 : String = "default"
+@export var element2 : String = "default"
+@export var element1_strength : int = 1
+@export var element2_strength : int = 1
+
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
-var freeflying : bool = false
 
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var fire1_timer: Timer = $Fire1Timer
+@onready var fire2_timer: Timer = $Fire2Timer
+@onready var bullet_spawn: Node3D = $Head/Camera3D/BulletSpawn
+
+const BULLET: PackedScene = preload("res://scenes/bullet.tscn")
 
 func _ready() -> void:
 	look_rotation.y = rotation.y
@@ -46,6 +60,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
 		rotate_look(event.relative)
+
+func spawn_bullet(element, strength):
+	var bullet = BULLET.instantiate()
+	bullet.element = element
+	get_tree().root.add_child(bullet)
+	bullet.global_transform = bullet_spawn.global_transform
+	bullet.apply_impulse(-bullet_spawn.global_basis.z * strength * 10)
 
 func _physics_process(delta: float) -> void:
 	
@@ -79,9 +100,17 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		velocity.y = 0
 	
+	# Shoot
+	if can_shoot:
+		if Input.is_action_just_pressed(input_fire1) and fire1_timer.is_stopped():
+			spawn_bullet(element1, element1_strength)
+			fire1_timer.start()
+		if Input.is_action_just_pressed(input_fire2) and fire1_timer.is_stopped():
+			spawn_bullet(element2, element2_strength)
+			fire2_timer.start()
+	
 	# Use velocity to actually move
 	move_and_slide()
-
 
 ## Rotate us to look around.
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).

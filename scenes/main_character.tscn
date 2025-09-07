@@ -18,7 +18,6 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_ucva2")
 can_jump = false
-can_sprint = true
 base_speed = 4.0
 sprint_speed = 6.0
 input_left = "move_left"
@@ -26,6 +25,9 @@ input_right = "move_right"
 input_forward = "move_up"
 input_back = "move_down"
 input_jump = "jump"
+input_sprint = "sprint"
+input_fire1 = "fire1"
+input_fire2 = "fire2"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -41,3 +43,12 @@ shape = SubResource("CapsuleShape3D_iof21")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="BulletSpawn" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+
+[node name="Fire1Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Fire2Timer" type="Timer" parent="."]
+one_shot = true
