@@ -38,7 +38,16 @@ func _on_area_entered(area: Area3D) -> void:
 
 func get_fusion(element1: String, element2: String) -> String:
 	var elements = [element1, element2]
-	if elements.has("epine") && elements.has("lierre") : return "ronce"
+	if elements.has("lierre") && elements.has("epine") : return "ronce"
+	if elements.has("lierre") && elements.has("champignon") : return "mycellium"
+	if elements.has("lierre") && elements.has("baie") : return "ortie"
+	if elements.has("lierre") && elements.has("fleur") : return ""
+	if elements.has("epine") && elements.has("champignon") : return "oursin"
+	if elements.has("epine") && elements.has("baie") : return "houx"
+	if elements.has("epine") && elements.has("fleur") : return "carnivore"
+	if elements.has("champignon") && elements.has("baie") : return "moisissure"
+	if elements.has("champignon") && elements.has("fleur") : return ""
+	if elements.has("baie") && elements.has("fleur") : return "fraisier"
 	return "default"
 
 func get_mesh(element: String) -> Mesh:
