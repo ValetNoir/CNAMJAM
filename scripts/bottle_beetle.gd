@@ -38,8 +38,15 @@ func _deal_damage():
 		player_in_zone.hurted()
 		damage_cooldown.start()
 
-func hurted():
-	pv -= 5
-	print("-5")
+func hurted(element: String):
+	if element == "epine":
+		pv -= 5
+		print("-5")
+	elif element == "lierre":
+		pv -= 10
+		print("-10")
+	elif element == "ronce":
+		pv -= 15
+		print("-15")
 	if pv <= 0:
 		queue_free()

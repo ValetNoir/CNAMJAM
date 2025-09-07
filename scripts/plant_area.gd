@@ -74,5 +74,5 @@ func _on_damage_cooldown_timeout() -> void:
 
 func _deal_damage():
 	if mob_in_zone:
-		mob_in_zone.hurted()
+		mob_in_zone.hurted(element)
 		damage_cooldown.start()
