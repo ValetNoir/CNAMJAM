@@ -2,7 +2,8 @@ extends Area3D
 
 const PLANT_AREA: PackedScene = preload("res://scenes/plant_area.tscn")
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = $TimerDespawn
+@onready var damage_cooldown: Timer = $TimerDealDamage
 
 @export_group("Models")
 @export var epine_mesh: Mesh
@@ -13,6 +14,8 @@ const PLANT_AREA: PackedScene = preload("res://scenes/plant_area.tscn")
 var element: String = "default"
 
 var should_handle = true
+
+var mob_in_zone: Mob = null
 
 
 func _on_area_entered(area: Area3D) -> void:
@@ -50,6 +53,26 @@ func _on_ready() -> void:
 	var mesh : Mesh = get_mesh(element)
 	mesh_instance_3d.set_mesh(mesh)
 
-
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+
+func _on_hitbox_body_entered(body: Node) -> void:
+	if body is Mob:
+		mob_in_zone = body
+		if damage_cooldown.is_stopped(): # Ne faire des dégâts que si le timer est arrêté
+			_deal_damage()
+
+func _on_hitbox_body_exited(body: Node3D) -> void:
+	if body == mob_in_zone:
+		mob_in_zone = null
+
+func _on_damage_cooldown_timeout() -> void:
+	if mob_in_zone:
+		_deal_damage()
+
+func _deal_damage():
+	if mob_in_zone:
+		mob_in_zone.hurted()
+		damage_cooldown.start()

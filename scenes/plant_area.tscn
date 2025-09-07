@@ -46,11 +46,16 @@ mesh = ExtResource("2_qcu7k")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6gxnc")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerDespawn" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
 autostart = true
 
+[node name="TimerDealDamage" type="Timer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_hitbox_body_exited"]
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDespawn" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDealDamage" to="." method="_on_damage_cooldown_timeout"]

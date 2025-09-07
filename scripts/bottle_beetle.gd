@@ -1,16 +1,21 @@
 extends RigidBody3D
+class_name Mob
 
 
 @onready var hitbox: Area3D = $Hitbox
-@onready var damage_cooldown: Timer = $Timer
+@onready var damage_cooldown: Timer = $TimerDealDamage
 
 var player_in_zone: Player = null
+
+var pv = 100
+var max_pv = 100
 
 
 func _ready():
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	hitbox.body_exited.connect(_on_hitbox_body_exited)
 	damage_cooldown.timeout.connect(_on_damage_cooldown_timeout)
+	max_pv = pv
 
 func _on_hitbox_body_entered(body: Node) -> void:
 	if body is Player:
@@ -32,3 +37,9 @@ func _deal_damage():
 		$"bottle beetle/AnimationPlayer".play("DashAttack")
 		player_in_zone.hurted()
 		damage_cooldown.start()
+
+func hurted():
+	pv -= 5
+	print("-5")
+	if pv <= 0:
+		queue_free()

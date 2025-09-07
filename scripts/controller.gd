@@ -6,7 +6,7 @@
 extends CharacterBody3D
 class_name Player
 
-signal get_damage
+signal player_get_damage
 
 @export var can_move : bool = true
 @export var has_gravity : bool = true
@@ -138,4 +138,4 @@ func release_mouse():
 
 
 func hurted():
-	get_damage.emit()
+	player_get_damage.emit()
