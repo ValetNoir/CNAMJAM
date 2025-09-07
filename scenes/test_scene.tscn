@@ -50,6 +50,7 @@ element2 = "lierre"
 
 [node name="Bottle Beetle" parent="." instance=ExtResource("4_7ddre")]
 transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 0, 0)
+collision_mask = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
