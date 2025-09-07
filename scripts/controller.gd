@@ -69,6 +69,7 @@ func spawn_bullet(element: String, strength: int):
 	bullet.element = element
 	get_tree().root.add_child(bullet)
 	bullet.global_transform = bullet_spawn.global_transform
+	bullet.set_collision_mask_value(3, true) # Ennemi Layer
 	bullet.apply_impulse(-bullet_spawn.global_basis.z * strength * 10)
 
 func _physics_process(delta: float) -> void:
@@ -108,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed(input_fire1) and fire1_timer.is_stopped():
 			spawn_bullet(element1, element1_strength)
 			fire1_timer.start()
-		if Input.is_action_just_pressed(input_fire2) and fire1_timer.is_stopped():
+		if Input.is_action_just_pressed(input_fire2) and fire2_timer.is_stopped():
 			spawn_bullet(element2, element2_strength)
 			fire2_timer.start()
 	

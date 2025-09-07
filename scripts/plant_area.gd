@@ -12,15 +12,19 @@ const PLANT_AREA: PackedScene = preload("res://scenes/plant_area.tscn")
 # baies, fleurs, lianes, etc...
 var element: String = "default"
 
+var should_handle = true
 
 
 func _on_area_entered(area: Area3D) -> void:
+	if not should_handle : return
+	
 	var is_plant: bool = area.get_collision_layer_value(4)
 	
 	# Fusion
 	if is_plant:
 		var fusion = get_fusion(element, area.element)
 		if fusion != "default":
+			area.should_handle = false
 			var plant_area = PLANT_AREA.instantiate()
 			plant_area.element = fusion
 			get_tree().root.add_child(plant_area)
