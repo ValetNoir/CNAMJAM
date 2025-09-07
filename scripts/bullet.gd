@@ -11,8 +11,6 @@ func _on_body_entered(body: Node) -> void:
 	
 	var is_ground: bool = body.get_collision_layer_value(1)
 	
-	print_debug(global_position)
-	
 	if element == "default":
 		# PAS DE ZONE, DEGATS SIMPLE SUR MOB
 		pass
@@ -21,6 +19,8 @@ func _on_body_entered(body: Node) -> void:
 		spawn_zone()
 	
 	queue_free()
+	if body is Player:
+		body.hurted()
 
 func spawn_zone() -> void:
 	var plant_area = PLANT_AREA.instantiate()

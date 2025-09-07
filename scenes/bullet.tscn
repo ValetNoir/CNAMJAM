@@ -11,10 +11,11 @@ height = 0.05
 
 [node name="Bullet" type="RigidBody3D"]
 collision_layer = 0
-collision_mask = 5
+collision_mask = 7
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_mkf8s")
+speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

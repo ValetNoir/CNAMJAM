@@ -4,6 +4,9 @@
 # Happy prototyping!
 
 extends CharacterBody3D
+class_name Player
+
+signal get_damage
 
 @export var can_move : bool = true
 @export var has_gravity : bool = true
@@ -131,3 +134,7 @@ func capture_mouse():
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
+
+
+func hurted():
+	get_damage.emit()

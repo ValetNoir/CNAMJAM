@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://buurbyomkdu11"]
+[gd_scene load_steps=4 format=3 uid="uid://buurbyomkdu11"]
 
 [ext_resource type="Script" uid="uid://can2t4vleye0w" path="res://scripts/plant_area.gd" id="1_6gxnc"]
 
@@ -26,6 +26,3 @@ shape = SubResource("SphereShape3D_63vbk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-08, 0)
 mesh = SubResource("CylinderMesh_63vbk")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_6gxnc")
-
-[connection signal="ready" from="." to="." method="_on_ready"]

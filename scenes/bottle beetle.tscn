@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://diusr31i4xijv"]
+
+[ext_resource type="PackedScene" uid="uid://bh6pc1xmtvh6e" path="res://models/bottle beetle.glb" id="1_8vvxf"]
+[ext_resource type="Script" uid="uid://4bgnonpt4hmf" path="res://scripts/bottle_beetle.gd" id="1_bb38a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8vvxf"]
+points = PackedVector3Array(-0.555649, 3.06219, 0.831344, -0.707224, 3.05886, -0.707113, -0.918319, 2.98889, -0.000166059, -1.00002, 2.91287, -0.000166059, -0.924234, 2.77143, 0.382508, -1.51094, 1.36938, 0.839104, -1.47951, 1.38301, 0.888929, -1.4614, 1.36211, 0.938958, -1.65327, 0.468308, 1.06148, -0.383002, 2.74356, 0.923847, -0.000369549, 2.68904, 0.999811, 0.194829, 2.84169, 0.980615, 0.831441, 2.83412, 0.555467, 0.917949, 2.98889, -0.000166059, 1.19209e-07, 2.98889, -1.00014, -0.383002, 2.91105, -0.923975, -1.45659, 1.3709, -0.917645, -1.48099, 1.38301, -0.863736, -1.51242, 1.3606, -0.821262, -1.63442, 1.37181, -0.0593846, -1.63035, 1.38332, -0.000166059, -1.63737, 1.3606, 0.0519054, -1.88839, 0.46225, 0.00861466, -1.70281, 0.467399, 0.992868, -1.69283, 0.461947, 1.03636, -1.559, -0.0314479, 0.975102, 1.6529, 0.468308, 1.06148, -1.59486, 0.485875, 1.06128, 1.59449, 0.485875, 1.06128, 1.46103, 1.36211, 0.938958, 0.999652, 2.90772, -0.000166059, 1.47914, 1.38301, 0.888929, 1.51057, 1.36938, 0.839104, 0.649182, 2.91923, -0.649324, 0.706854, 2.80626, -0.707113, 1.45622, 1.3709, -0.917645, 1.67656, 0.467702, -1.01607, 1.62259, 0.485572, -1.02465, -1.62295, 0.485572, -1.02465, -1.67693, 0.467702, -1.01607, -1.70761, 0.461342, -0.984011, -1.57563, -0.0320537, -0.918462, -1.742, -0.0314479, -0.000370264, 1.55863, -0.0314479, 0.975102, 1.69246, 0.461947, 1.03636, 1.637, 1.3606, 0.0519054, 1.62998, 1.38332, -0.000166059, 1.63405, 1.37181, -0.0593846, 1.51205, 1.3606, -0.821262, 1.48062, 1.38301, -0.863736, 1.70244, 0.467399, 0.992868, 1.88839, 0.46225, 0.00861466, 1.70725, 0.461342, -0.984011, 1.57526, -0.0320537, -0.918462, 1.74163, -0.0314479, -0.000370264)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bb38a"]
+
+[node name="Bottle Beetle" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_bb38a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000827283, 0)
+shape = SubResource("ConvexPolygonShape3D_8vvxf")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(4.78089, 0, 0, 0, 4.78089, 0, 0, 0, 4.78089, 0, 1.35012, 0)
+shape = SubResource("SphereShape3D_bb38a")
+
+[node name="bottle beetle" parent="." instance=ExtResource("1_8vvxf")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_damage_cooldown_timeout"]

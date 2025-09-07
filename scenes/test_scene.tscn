@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://h5itfouuthkk"]
+[gd_scene load_steps=8 format=3 uid="uid://h5itfouuthkk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main_character.tscn" id="1_g7g4h"]
+[ext_resource type="Script" uid="uid://ww646fvr2dqv" path="res://scripts/test_scene.gd" id="1_nd71p"]
+[ext_resource type="PackedScene" uid="uid://diusr31i4xijv" path="res://scenes/bottle beetle.tscn" id="4_7ddre"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a5oyu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -15,6 +17,7 @@ sky = SubResource("Sky_g7g4h")
 tonemap_mode = 2
 
 [node name="Test scene" type="Node3D"]
+script = ExtResource("1_nd71p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j8ivh")
@@ -43,3 +46,15 @@ size = Vector3(1, 1.6, 1)
 [node name="Player" parent="." instance=ExtResource("1_g7g4h")]
 can_jump = true
 element1 = "lalala"
+
+[node name="Bottle Beetle" parent="." instance=ExtResource("4_7ddre")]
+transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "vie : X"
+
+[connection signal="get_damage" from="Player" to="." method="player_hurted"]
