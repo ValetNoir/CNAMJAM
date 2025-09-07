@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://h5itfouuthkk"]
+[gd_scene load_steps=7 format=3 uid="uid://h5itfouuthkk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main_character.tscn" id="1_g7g4h"]
-[ext_resource type="Script" uid="uid://ww646fvr2dqv" path="res://scripts/test_scene.gd" id="1_nd71p"]
+[ext_resource type="Script" path="res://scripts/test_scene.gd" id="1_nd71p"]
 [ext_resource type="PackedScene" uid="uid://diusr31i4xijv" path="res://scenes/bottle beetle.tscn" id="4_7ddre"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a5oyu"]
@@ -45,7 +45,8 @@ size = Vector3(1, 1.6, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_g7g4h")]
 can_jump = true
-element1 = "lalala"
+element1 = "epine"
+element2 = "lierre"
 
 [node name="Bottle Beetle" parent="." instance=ExtResource("4_7ddre")]
 transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 0, 0)

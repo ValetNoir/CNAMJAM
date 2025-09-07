@@ -64,7 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if mouse_captured and event is InputEventMouseMotion:
 		rotate_look(event.relative)
 
-func spawn_bullet(element, strength):
+func spawn_bullet(element: String, strength: int):
 	var bullet = BULLET.instantiate()
 	bullet.element = element
 	get_tree().root.add_child(bullet)
