@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm06fblk4t7wu"
-path="res://.godot/imported/trucvie.png-71a8a5b7e59f4fce6708d471d6330808.ctex"
+path="res://.godot/imported/trucvie.png-155761553890e3ff8247f4f95aa79cf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/trucvie.png"
-dest_files=["res://.godot/imported/trucvie.png-71a8a5b7e59f4fce6708d471d6330808.ctex"]
+source_file="res://texture/trucvie.png"
+dest_files=["res://.godot/imported/trucvie.png-155761553890e3ff8247f4f95aa79cf2.ctex"]
 
 [params]
 
