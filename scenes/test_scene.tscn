@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://h5itfouuthkk"]
+[gd_scene load_steps=9 format=3 uid="uid://h5itfouuthkk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main_character.tscn" id="1_g7g4h"]
 [ext_resource type="Script" uid="uid://ww646fvr2dqv" path="res://scripts/test_scene.gd" id="1_nd71p"]
 [ext_resource type="PackedScene" uid="uid://diusr31i4xijv" path="res://scenes/bottle beetle.tscn" id="4_7ddre"]
+[ext_resource type="PackedScene" uid="uid://ciy7rpi5afoos" path="res://models/rampe.glb" id="4_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://dad8nwe48wrny" path="res://models/car.glb" id="5_3qnke"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a5oyu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -30,26 +32,25 @@ shadow_enabled = true
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00982666, -0.5, -0.0587158)
+transform = Transform3D(9.10526, 0, 0, 0, 9.10526, 0, 0, 0, 9.10526, -0.00982666, -0.5, -0.0587158)
 size = Vector3(15.996, 1, 17.3738)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Level"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 2.3, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.41349, 8.64139, 6.53365, 5.80956)
+size = Vector3(1, 5.09692, 36.5729)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 1, 0.5, 1.4)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -1.21244, 0.8, 1.46603)
-size = Vector3(1, 1.6, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.99795, -10.2307, 5.63226, -6.52447)
+size = Vector3(1, 5.09692, 36.5729)
 
 [node name="Player" parent="." instance=ExtResource("1_g7g4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24215, 5.43683, 18.0711)
 can_jump = true
 element1 = "epine"
 element2 = "lierre"
 
 [node name="Bottle Beetle" parent="." instance=ExtResource("4_7ddre")]
-transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 0, 0)
+transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 4.45766, 0)
 collision_mask = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -58,5 +59,23 @@ collision_mask = 7
 offset_right = 40.0
 offset_bottom = 23.0
 text = "vie : X"
+
+[node name="rampe2" parent="." instance=ExtResource("4_qjeyg")]
+transform = Transform3D(8.74984, 0, 0, 0, 8.74984, 0, 0, 0, 8.74984, -1.1272, 3.98631, 29.7136)
+
+[node name="car" parent="." instance=ExtResource("5_3qnke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93814, 4.05263, 23.6393)
+
+[node name="Bottle Beetle2" parent="." instance=ExtResource("4_7ddre")]
+transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 4.45766, 0)
+collision_mask = 7
+
+[node name="Bottle Beetle3" parent="." instance=ExtResource("4_7ddre")]
+transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 4.45766, 0)
+collision_mask = 7
+
+[node name="Bottle Beetle4" parent="." instance=ExtResource("4_7ddre")]
+transform = Transform3D(0.51707, 0, 0, 0, 0.51707, 0, 0, 0, 0.51707, 5.13564, 4.45766, 0)
+collision_mask = 7
 
 [connection signal="player_get_damage" from="Player" to="." method="player_hurted"]
